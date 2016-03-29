@@ -1,0 +1,115 @@
+#Part 3 and Part 4
+#Scott Cagnard
+#Assignment 4
+
+#Parts 3 and 4
+
+print("This is a simple calculator")            #Introduce the calculator
+print("To end the calcualtor, type and enter 'end'")    #Introduce key inputs to do specific operations
+print("For the infinite amount of past expressions calculated, type and enter 'memory'")
+
+
+print("\n\n")  # print a couple of blank lines
+input("Press and key to continute")
+print("\n\n")  # print a couple of blank lines
+
+expr = input("Enter a simple expression to calculate")    #Acquire an expression from the user to calculate
+
+
+def calculator(expr):       #Define function calculator in order to calculate simple expressions
+    mem = []                #Set mem equal to an empty list
+    while expr != "end":     #Create a while loop with condition expr is not equal to 'end'
+        count = 0            #Set variable count equal to zero
+        a = expr.find("+")   #Extract the position of the operation given in the expression
+        b = expr.find("-")
+        c = expr.find("*")
+        d = expr.find("/")
+        n1= (expr[:a])           
+        n2 = (expr[a + 1:])      #Extract the values before and after the plus sign
+        n3= (expr[:b])
+        n4 = (expr[b + 1:])     #Extract the values before and after the minus sign
+        n5= (expr[:c])
+        n6 = (expr[c + 1:])     #Extract the values before and after the multiplication sign
+        n7= (expr[:d])
+        n8 = (expr[d + 1:])     #Extract the values before and after the division sign
+
+        if expr == "memory":   #Create an if statement with condition expr is equal to 'memory'
+            print(mem)         #Print the list of calculated valid expressions in this session    #Ask the user to enter an expression to calculate
+        else:      #If expr is not equal to 'memory', do nothing
+            pass
+        
+        if expr.find("+") == -1 and expr.find("-") == -1 and expr.find("*") == -1 and expr.find("/") == -1:
+            count += 1    #If no operation is detected, add one to the variable count
+        else:
+            pass    #If operation detected, do nothing
+        
+        if n1 == "" or n2 == "" or n3 == "" or n4 == "" or n5 == "" or n6 == "" or n7 == "" or n8 == "":
+            count +=1   #If there are any blank spaces before or after an operation, add one to the variable count
+        else:     #If there are no blank spaces, do nothing
+            pass
+
+        l = ["0","1","2","3","4","5","6","7","8","9","+","-","*","/"]  #Create a list l consisting of numbers and operations
+        for i in expr:   #Detect each character in expr
+                if i in l:    #If each character in expr is in l, do nothing
+                    pass
+                else:    #If there is a character in expr that is not in l, add one to the variable count
+                    count += 1
+        
+        if count > 0 :   #If the count is greater than zero, then we know something is wrong with the expression, making it invalid
+            print("Invalid Expression")
+            expr = input("Please enter a valid expression")    #Ask the user for a valid expression
+        
+        else:       #Once we know it is a valid expression, we can calcualte the value
+            print("Valid expression")
+            f = expr      #Set the expression equal to f
+    
+            if f.find("+") == -1:
+                pass
+            else:         #If the operation is addition, extract the values before and after the plus sign
+                n1= int(f[:a])
+                n2 = int(f[a + 1:])
+                print(n1, "+", n2, "=", n1 + n2)    #Calculate the expression
+                A = (n1, "+", n2, "=", n1 + n2) 
+                mem.append(A)    #Add the expression to list mem
+                expr = input("Enter another expression")    #Ask for a new expression
+
+            if f.find("-") == -1:
+                pass              #If no minus sign found, do nothing
+            else:
+                n1= int(f[:b])      #If the operation is subtraction, extract the values before and after the minus sign
+                n2 = int(f[b + 1:])
+                print(n1, "-", n2, "=", n1 - n2)
+                B = (n1, "-", n2, "=", n1 - n2)    #Calculate the expression
+                mem.append(B)    #Add expression to list mem
+                expr = input("Enter another expression")   #Ask for another expressio 
+
+            if f.find("/") == -1:   #If no division sign found, do nothing
+                pass
+            else:
+                n1= int(f[:d])       #If division sign found, extract the number before and after division sign
+                n2 = int(f[d + 1:])
+                print(n1, "/", n2, "=", n1 / n2)  #Calculate expression
+                C = (n1, "/", n2, "=", n1/n2)
+                mem.append(C)    #Add expression to list mem
+                expr = input("Enter another expression")   #Ask for another expression
+
+            if f.find("*") == -1:
+                pass        #If multiplication sign not found, do nothing
+            else:
+                n1= int(f[:c])        #If multiplication sign found, extract the number before and after the multiplication sign
+                n2 = int(f[c + 1:])
+                print(n1, "*", n2, "=", n1 * n2)  #Calculate the expression
+                D = (n1, "*", n2, "=", n1 * n2)
+                mem.append(D)    #Add expression to list mem
+                expr = input("Enter another expression")    #Ask for another expression
+        
+        if expr == "end":   #When the user enters 'end', this will end the calculator program   
+            print("The calculator is over")
+        else:
+            pass
+
+calculator(expr)
+
+   
+
+

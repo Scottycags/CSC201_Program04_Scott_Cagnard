@@ -1,0 +1,50 @@
+#Scott Cagnard
+
+#Reference for functions
+
+
+
+b = input("Please enter an expression calculating two numbers")   #Acquire a numeric expression from user
+
+while b != "end":    #Create a while loop with the condition that b is not equal to "end"
+                #This while loop will keep asking for expressions to calculate until the user enters "end", which will end the calculator
+
+    if b.find("+") == -1:      #If no plus sign found, do nothing
+        pass
+    else:
+        y = b.find("+")    #If plus sign found, extract number before and after plus sign
+        n1= int(b[:y])
+        n2 = int(b[y + 1:])
+        print(n1, "+", n2, "=", n1 + n2)   #Calculate and print full expression
+        b = input("Please enter an expression calculating two numbers")   #Ask for new expression
+
+    if b.find("-") == -1:
+        pass              #If no minus sign found, do nothing
+    else:
+        y = b.find("-")   #If minus sign found, extract number before and after minus sign
+        n1= int(b[:y])
+        n2 = int(b[y + 1:])
+        print(n1, "-", n2, "=", n1 - n2)    #Calculate and print full expression
+        b = input("Please enter an expression calculating two numbers") #Ask for new expression to calculate
+
+    if b.find("/") == -1:   #If no division sign found, do nothing
+        pass
+    else:
+        y = b.find("/")
+        n1= int(b[:y])       #If division sign found, extract the number before and after division sign
+        n2 = int(b[y + 1:])
+        print(n1, "/", n2, "=", n1 / n2)  #Calculate and print full expression
+        b = input("Please enter an expression calculating two numbers")   #Ask for a new expression to calculate
+
+    if b.find("*") == -1:
+        pass        #If multiplication sign not found, do nothing
+    else:
+        y = b.find("*")
+        n1= int(b[:y])        #If multiplication sign found, extract the number before and after the multiplication sign
+        n2 = int(b[y + 1:])
+        print(n1, "*", n2, "=", n1 * n2)  #Calculate and print full expression
+        b = input("Please enter an expression calculating two numbers")  #Ask for new expression to calculate
+
+    if b.find("+") == -1 and b.find("-") == -1 and b.find("/") == -1 and b.find("*") == -1:
+        print("invalid expresssion")   #If no arithmetic sign found, print "invalid expression"
+        b = input("Please enter an expression calculating two numbers")  #Ask for new expression to calculate

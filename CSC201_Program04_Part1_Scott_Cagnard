@@ -1,0 +1,98 @@
+#Scott Cagnard
+#Assignment 4
+
+
+#Part 1
+
+def simpleExpressionIsValid(str):        #Define a function for the purpose of determining if a certain expression is valid
+    count = 0                   #Set variable count equal to zero
+    a = str.find("+")       #Extract the positions of any of the operations given in the expression
+    b = str.find("-")
+    c = str.find("*")
+    d = str.find("/")
+    n1= (str[:a])
+    n2 = (str[a + 1:])       #Extract the values as a string before and after the plus sign
+    n3= (str[:b])
+    n4 = (str[b + 1:])       #Extract the values as a string before and after the minus sign
+    n5= (str[:c])
+    n6 = (str[c + 1:])      #Extract the values as a string before and after the multiplication sign
+    n7= (str[:d])
+    n8 = (str[d + 1:])       #Extract the values as a string before and after the division sign
+    if str.find("+") == -1 and str.find("-") == -1 and str.find("*") == -1 and str.find("/") == -1:
+        count += 1     #If no operation is provided, add one to the variable count
+    elif n1 == "" or n2 == "" or n3 == "" or n4 == "" or n5 == "" or n6 == "" or n7 == "" or n8 == "": 
+        count += 1    #If there is any blank spaces before or after an operation, add one to the variable count
+    else:
+        for i in str:        #Detect each character in the expression
+            l = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/"]   #Create a list consisiting of numbers and operations
+            if i in l:  #If a character detected is a number or operation, do noting
+                pass
+            else:       #If there is an invalid character in the expression, add one to the variable count
+                count += 1
+    if count > 0:   #From the if-elif statement above, we can detect if there is anything wrong with the expression
+        print(str, "Is an Invalid Expression")  #If the count is greater than zero, then there is at least on thing wrong with the expression, making it invalid
+    else:   #If the count is less than zero, then we know there is nothing wrong with the expression, so we know it is valid
+        print(str, "Is a Valid Expression")
+
+simpleExpressionIsValid("54+")          #We input any type of expression into the function and it will determine if it is valid or invalid
+simpleExpressionIsValid("23-4")
+simpleExpressionIsValid("sfg-2fg")
+simpleExpressionIsValid("3*8")
+
+
+print("\n\n")  # print a couple of blank lines
+input("Press and key to continute")
+print("\n\n")  # print a couple of blank lines
+
+
+#Part 2
+
+
+def evaluateSimpleExpression(expr):       #Define a function with the purpose of evaluating a simple expression
+    
+    b = expr                     #Set b equal to expression
+    
+    if b.find("+") == -1:      #If no plus sign found, do nothing
+        pass
+    else:
+        y = b.find("+")    #If plus sign found, extract number before and after plus sign
+        n1= int(b[:y])
+        n2 = int(b[y + 1:])
+        print(n1, "+", n2, "=", n1 + n2)   #Calculate and print full expression
+
+    if b.find("-") == -1:
+        pass              #If no minus sign found, do nothing
+    else:
+        y = b.find("-")   #If minus sign found, extract number before and after minus sign
+        n1= int(b[:y])
+        n2 = int(b[y + 1:])
+        print(n1, "-", n2, "=", n1 - n2)    #Calculate and print full expression
+        
+
+    if b.find("/") == -1:   #If no division sign found, do nothing
+        pass
+    else:
+        y = b.find("/")
+        n1= int(b[:y])       #If division sign found, extract the number before and after division sign
+        n2 = int(b[y + 1:])
+        print(n1, "/", n2, "=", n1 / n2)  #Calculate and print full expression
+        
+
+    if b.find("*") == -1:
+        pass        #If multiplication sign not found, do nothing
+    else:
+        y = b.find("*")
+        n1= int(b[:y])        #If multiplication sign found, extract the number before and after the multiplication sign
+        n2 = int(b[y + 1:])
+        print(n1, "*", n2, "=", n1 * n2)  #Calculate and print full expression
+
+evaluateSimpleExpression("30-54")        #Assuming that each entered expression is valid, the function will calculate the value of the simple expression 
+evaluateSimpleExpression("45+19")
+evaluateSimpleExpression("12*6")
+evaluateSimpleExpression("10/4")
+
+
+
+
+
+
